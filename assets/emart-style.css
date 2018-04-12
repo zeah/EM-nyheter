@@ -2,12 +2,16 @@
 
 */
 
+html {
+	font-size: 62.5%;
+}
+
 /* container for list of articles */
 .em-articles-container {
 	opacity: 1 !important;
 
 	margin: auto;
-	width: 95%;
+	width: 100%;
 	font-size: 10px;
 }
 
@@ -22,12 +26,14 @@
 .em-articles-listitem {
 	flex-basis: 30%; /* 3 article per line */
 	list-style: none !important; /* li fix */
-	margin: 1.5em;
+	/*margin: 1.5em;*/
+	margin-bottom: 3rem;
+	margin-right: 3rem;
 }
 
 /* special rule for first <li> element */
 .em-articles-firstitem {
-	flex-basis: calc(60% + 3em); /* twice the size + margins to equal 2 articles */
+	flex-basis: calc(60% + 3rem); /* twice the size + margins to equal 2 articles */
 	background-color: hsl(20, 10%, 95%);
 }
 
@@ -61,10 +67,10 @@
 .em-articles-title {
 	display: block;
 
-	padding: 0.5em;
+	padding: 0.5rem;
 	line-height: 1;
 	
-	font-size: 2.4em;
+	font-size: 2.4rem;
 	font-weight: bold;
 }
 
@@ -72,9 +78,8 @@
 .em-articles-excerpt {
 	display: block;
 
-	padding: 0 0.5em;
-	
-	font-size: 1.6em;
+	margin: 1rem;
+	font-size: 1.6rem;
 }
 
 /* special rule for first article image */
@@ -82,7 +87,7 @@
 .em-articles-thumbnail-first { 
 	background-repeat: no-repeat;
 	background-size: 100% auto;
-	height: 20em;
+	height: 20rem;
 	background-position: 0 40%;
 	display: block;
 }
@@ -95,7 +100,7 @@
 .em-articles-widget {
 	display: flex;
     flex-direction: row;
-    height: 30em;
+    height: 30rem;
 }
 
 /**/
