@@ -46,7 +46,7 @@ final class EmArtPager {
 
 	public function add_meta_desc_callback() {
 		wp_nonce_field( basename(__FILE__), 'em_nonce' );
-		echo '<textarea style="width: 100%; height: 5em;" name="emartdesc">'.$this->getmeta('emartdesc').'</textarea>';
+		echo '<textarea style="width: 100%; height: 5em;" name="emtext">'.$this->getmeta('emtext').'</textarea>';
 	}
 
 	/* <TITLE> */
@@ -85,7 +85,7 @@ final class EmArtPager {
 		if ( ! wp_verify_nonce( $_POST['em_nonce'], basename(__FILE__))) return;
 
 		// meta data to save
-		$meta = ['emartdesc', 'emarttitle', 'emartstruc'];
+		$meta = ['emtext', 'emarttitle', 'emartstruc'];
 
 		foreach ($meta as $value)
 			if (isset($_POST[$value])) update_post_meta($postid, $value, sanitize_text_field($_POST[$value]));

@@ -18,7 +18,16 @@ final class ShortEmArt {
 
 	/* adding the shortcode registration hook */
 	private function wp_hooks() {
+        add_filter('pre_get_posts', array($this, 'set_search'), 99);
+
 		add_shortcode( 'articles', array($this, 'shortcode_callback') );
+	}
+
+	public function set_search($query) {
+        if ($query->is_search) {
+	        if (!$query->get('post_type')) $query->set('post_type', array('page', 'post', 'article'));
+    	    else $query->set('post_type', array_merge(array('article'), $query->get('post_type')));
+		}
 	}
 
 	/* shortcode callback 

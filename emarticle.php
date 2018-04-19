@@ -6,7 +6,7 @@
 /*
 Plugin Name: EM Article
 Description: Articles
-Version: 1.0.0.1
+Version: 1.0.0.3
 */
 
 defined( 'ABSPATH' ) or die( 'Blank Space' );
