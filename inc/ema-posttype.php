@@ -23,9 +23,9 @@ final class RegEmArt {
 		add_action('init', array($this, 'register_post_type'));
 
 		// adding menu order column to article posts admin page
-		add_filter('manage_article_posts_columns', array($this, 'my_columns'));
-		add_action('manage_article_posts_custom_column',  array($this, 'my_show_columns'));
-		add_filter( 'manage_edit-article_sortable_columns', array($this, 'sort_column'));
+		add_filter('manage_nyhet_posts_columns', array($this, 'my_columns'));
+		add_action('manage_nyhet_posts_custom_column',  array($this, 'my_show_columns'));
+		add_filter( 'manage_edit-nyhet_sortable_columns', array($this, 'sort_column'));
 
 		// registering widget area
 		add_action('widgets_init', array($this, 'register_widget'));
@@ -48,18 +48,18 @@ final class RegEmArt {
 	public function register_post_type() {
 	
 		$labels = array(
-			'name'               => __( 'Artikler', 'text-domain' ),
-			'singular_name'      => __( 'Artikkel', 'text-domain' ),
-			'add_new'            => _x( 'Add New Artikkel', 'text-domain', 'text-domain' ),
-			'add_new_item'       => __( 'Add New Artikkel', 'text-domain' ),
-			'edit_item'          => __( 'Edit Artikkel', 'text-domain' ),
-			'new_item'           => __( 'New Artikkel', 'text-domain' ),
-			'view_item'          => __( 'View Artikkel', 'text-domain' ),
-			'search_items'       => __( 'Search Artikler', 'text-domain' ),
-			'not_found'          => __( 'No Artikler found', 'text-domain' ),
-			'not_found_in_trash' => __( 'No Artikler found in Trash', 'text-domain' ),
-			'parent_item_colon'  => __( 'Parent Artikkel:', 'text-domain' ),
-			'menu_name'          => __( 'Artikler', 'text-domain' ),
+			'name'               => __( 'Nyheter', 'text-domain' ),
+			'singular_name'      => __( 'Nyhet', 'text-domain' ),
+			'add_new'            => _x( 'Add New Nyhet', 'text-domain', 'text-domain' ),
+			'add_new_item'       => __( 'Add New Nyhet', 'text-domain' ),
+			'edit_item'          => __( 'Edit Nyhet', 'text-domain' ),
+			'new_item'           => __( 'New Nyhet', 'text-domain' ),
+			'view_item'          => __( 'View Nyhet', 'text-domain' ),
+			'search_items'       => __( 'Search Nyheter', 'text-domain' ),
+			'not_found'          => __( 'No Nyheter found', 'text-domain' ),
+			'not_found_in_trash' => __( 'No Nyheter found in Trash', 'text-domain' ),
+			'parent_item_colon'  => __( 'Parent Nyhet:', 'text-domain' ),
+			'menu_name'          => __( 'Nyheter', 'text-domain' ),
 		);
 	
 		$args = array(
@@ -96,7 +96,7 @@ final class RegEmArt {
 			),
 		);
 	
-		register_post_type( 'article', $args );
+		register_post_type( 'nyhet', $args );
 		// add_post_type_support( 'article', 'post-formats' );
 	}
 
@@ -123,7 +123,7 @@ final class RegEmArt {
 	/* register a widget */
 	public function register_widget() {
 		register_sidebar(array( 
-			'name' => 'Article Widget',
+			'name' => 'Nyhet Widget',
 			'id' => 'emarticle-widget'
 		));
 	}
