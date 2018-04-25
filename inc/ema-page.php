@@ -41,7 +41,7 @@ final class EmArtPager {
 	}
 
 	public function add_meta_desc() {
-		add_meta_box('em-article-description', 'Meta Description', array($this, 'add_meta_desc_callback'), 'article');
+		add_meta_box('em-article-description', 'Meta Description', array($this, 'add_meta_desc_callback'), 'nyheter');
 	}
 
 	public function add_meta_desc_callback() {
@@ -51,7 +51,7 @@ final class EmArtPager {
 
 	/* <TITLE> */
 	public function add_meta_title() {
-		add_meta_box('em-article-title', 'Custom Title', array($this, 'add_meta_title_callback'), 'article');
+		add_meta_box('em-article-title', 'Custom Title', array($this, 'add_meta_title_callback'), 'nyheter');
 	}
 	public function add_meta_title_callback() {
 		echo '<input type="text" style="width: 100%" name="emarttitle" value="'.$this->getmeta('emarttitle').'">';
@@ -59,7 +59,7 @@ final class EmArtPager {
 
 	/* <SCRIPT> structured data */
 	public function add_meta_struc() {
-		add_meta_box('em-article-struc', 'Structured Data (no script tags)', array($this, 'add_meta_struc_callback'), 'article');
+		add_meta_box('em-article-struc', 'Structured Data (no script tags)', array($this, 'add_meta_struc_callback'), 'nyheter');
 	}
 	public function add_meta_struc_callback() {
 		// if data is json-eligble - then pretty print it
@@ -94,7 +94,7 @@ final class EmArtPager {
 	/* ADDING APPROPIATE META INFO TO WP_HEAD */
 	public function add_head() {
 		global $post;
-		if ($post && $post->post_type == 'article') {
+		if ($post && $post->post_type == 'nyheter') {
 			echo $this->getmeta('emartdesc') ? '<meta name="description" content="'.$this->getmeta('emartdesc').'">' : '';
 			echo $this->getmeta('emarttitle') ? '<title>'.$this->getmeta('emarttitle').'</title>' : '';
 		}
@@ -103,6 +103,6 @@ final class EmArtPager {
 	/* ADDING APPROPIATE META INFO TO WP_FOOTER */
 	public function add_footer() {
 		global $post;
-		if ($post && $post->post_type == 'article') echo json_decode($this->getmeta('emartstruc')) ? '<script type="application/ld+json">'.json_encode(json_decode($this->getmeta('emartstruc'))).'</script>' : '';
+		if ($post && $post->post_type == 'nyheter') echo json_decode($this->getmeta('emartstruc')) ? '<script type="application/ld+json">'.json_encode(json_decode($this->getmeta('emartstruc'))).'</script>' : '';
 	}
 }

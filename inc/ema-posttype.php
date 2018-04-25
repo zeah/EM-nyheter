@@ -23,9 +23,9 @@ final class RegEmArt {
 		add_action('init', array($this, 'register_post_type'));
 
 		// adding menu order column to article posts admin page
-		add_filter('manage_nyhet_posts_columns', array($this, 'my_columns'));
-		add_action('manage_nyhet_posts_custom_column',  array($this, 'my_show_columns'));
-		add_filter( 'manage_edit-nyhet_sortable_columns', array($this, 'sort_column'));
+		add_filter('manage_nyheter_posts_columns', array($this, 'my_columns'));
+		add_action('manage_nyheter_posts_custom_column',  array($this, 'my_show_columns'));
+		add_filter( 'manage_edit-nyheter_sortable_columns', array($this, 'sort_column'));
 
 		// registering widget area
 		add_action('widgets_init', array($this, 'register_widget'));
@@ -71,7 +71,7 @@ final class RegEmArt {
 			'show_ui'             => true,
 			'show_in_menu'        => true,
 			'show_in_admin_bar'   => true,
-			'menu_position'       => null,
+			'menu_position'       => 26,
 			'menu_icon' => 'dashicons-media-text',
 			'show_in_nav_menus'   => true,
 			'publicly_queryable'  => true,
@@ -96,7 +96,7 @@ final class RegEmArt {
 			),
 		);
 	
-		register_post_type( 'nyhet', $args );
+		register_post_type('nyheter', $args );
 		// add_post_type_support( 'article', 'post-formats' );
 	}
 

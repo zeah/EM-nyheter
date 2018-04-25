@@ -20,13 +20,13 @@ final class ShortEmArt {
 	private function wp_hooks() {
         add_filter('pre_get_posts', array($this, 'set_search'), 99);
 
-		add_shortcode( 'articles', array($this, 'shortcode_callback') );
+		add_shortcode('nyheter', array($this, 'shortcode_callback'));
 	}
 
 	public function set_search($query) {
         if ($query->is_search) {
-	        if (!$query->get('post_type')) $query->set('post_type', array('page', 'post', 'article'));
-    	    else $query->set('post_type', array_merge(array('article'), $query->get('post_type')));
+	        if (!$query->get('post_type')) $query->set('post_type', array('page', 'post', 'nyheter'));
+    	    else $query->set('post_type', array_merge(array('nyheter'), $query->get('post_type')));
 		}
 	}
 
@@ -39,7 +39,7 @@ final class ShortEmArt {
 
 		// default args for wp_query
 		$args = [
-			'post_type' => 'article',
+			'post_type' => 'nyheter',
 			'orderby' => [
 				'menu_order' => 'desc',
 				'date' => 'desc'
