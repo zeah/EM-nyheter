@@ -20,7 +20,8 @@ final class ShortEmArt {
 	private function wp_hooks() {
         add_filter('pre_get_posts', array($this, 'set_search'), 99);
 
-		add_shortcode('nyheter', array($this, 'shortcode_callback'));
+		add_shortcode('nyheter', array($this, 'shortcode'));
+		// add_shortcode('nyheter', array($this, 'shortcode_callback'));
 	}
 
 	public function set_search($query) {
@@ -28,6 +29,77 @@ final class ShortEmArt {
 	        if (!$query->get('post_type')) $query->set('post_type', array('page', 'post', 'nyheter'));
     	    else $query->set('post_type', array_merge(array('nyheter'), $query->get('post_type')));
 		}
+	}
+
+
+	public function shortcode($atts, $content = null) {
+		add_action('wp_print_footer_scripts', array($this, 'add_to_footer'));
+
+		$args = [
+			'post_type' => 'nyheter',
+			'posts_per_page' => 10,
+			'orderby' => [
+				'menu_order' => 'desc',
+				'date' => 'desc'
+			]
+		];
+
+		if (isset($atts['nr']) && is_numeric($atts['nr'])) $args['posts_per_page'] = $atts['nr'];
+
+		$posts = get_posts($args);
+
+
+		if (is_active_sidebar('emarticle-widget')) {
+			$sidebar = '';
+			ob_start();
+			dynamic_sidebar( 'emarticle-widget' );
+			$sidebar = ob_get_clean();
+		}
+
+		// wp_die(print_r($posts, true));
+		$html = '<div style="opacity: 0;" class="em-articles-container"><ul class="em-articles-list">';
+
+		$first = true;
+		foreach($posts as $post) {
+			// title
+
+			// add custom title meta
+
+			$title = sanitize_text_field(get_the_title($post));
+
+			// thumbnail
+			$thumbnail = esc_url(get_the_post_thumbnail_url($post, 'full'));
+
+			// url
+			$url = esc_url(get_permalink($post));
+
+			// excerpt
+			$excerpt = sanitize_text_field(get_the_excerpt($post));
+
+
+			if ($first) {
+				$html .= '<li class="em-articles-listitem em-articles-firstitem">';
+				$html .= '<a class="em-articles-link" href="'.$url.'">';
+				$html .= '<span class="em-articles-thumbnail-first" style="background-image: url(\''.$thumbnail.'\')"></span>';
+				$html .= '<span class="em-articles-title">'.$title.'</span>';
+				if (sizeof($excerpt) > 0) $html .= '<span class="em-articles-excerpt">'.$excerpt.'</span>';
+				$html .= '</a></li>';
+				if (is_active_sidebar('emarticle-widget')) $html .= '<li class="em-articles-listitem em-articles-widget"><ul class="em-articles-widget-list">'.$sidebar.'</ul></li>';
+				
+				$first = false;
+				continue;
+			}
+
+			$html .= '<li class="em-articles-listitem">';
+			$html .= '<a class="em-articles-link" href="'.$url.'">';
+			$html .= '<img class="em-articles-thumbnail" src="'.$thumbnail.'">';
+			$html .= '<span class="em-articles-title">'.$title.'</span>';
+			if (sizeof($excerpt) > 0) $html .= '<span class="em-articles-excerpt">'.$excerpt.'</span>';
+			$html .= '</a></li>';
+		}
+		$html .= '</div>';
+
+		return $html;
 	}
 
 	/* shortcode callback 
