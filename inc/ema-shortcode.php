@@ -97,7 +97,7 @@ final class ShortEmArt {
 			if (sizeof($excerpt) > 0) $html .= '<span class="em-articles-excerpt">'.$excerpt.'</span>';
 			$html .= '</a></li>';
 		}
-		$html .= '</div>';
+		$html .= '</ul></div>';
 
 		return $html;
 	}
