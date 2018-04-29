@@ -72,7 +72,7 @@ final class RegEmArt {
 			'show_in_menu'        => true,
 			'show_in_admin_bar'   => true,
 			'menu_position'       => 26,
-			'menu_icon' => 'dashicons-media-text',
+			'menu_icon' => '',
 			'show_in_nav_menus'   => true,
 			'publicly_queryable'  => true,
 			'exclude_from_search' => false,
