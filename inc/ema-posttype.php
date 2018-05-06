@@ -123,8 +123,9 @@ final class RegEmArt {
 	/* register a widget */
 	public function register_widget() {
 		register_sidebar(array( 
-			'name' => 'Nyhet Widget',
-			'id' => 'emarticle-widget'
+			'name' => 'Nyhet Plugin',
+			'id' => 'emarticle-widget',
+			'description' => 'If active, widget will be nyhet #2 in the nyhet\'s list.'
 		));
 	}
 }
