@@ -4,9 +4,9 @@
 */
 
 /*
-Plugin Name: EM Article
+Plugin Name: EM Article (EM Nyheter)
 Description: Articles
-Version: 1.0.1.0
+Version: 1.0.1.2
 */
 
 defined( 'ABSPATH' ) or die( 'Blank Space' );

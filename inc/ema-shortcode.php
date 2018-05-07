@@ -186,8 +186,8 @@ final class ShortEmArt {
 
 	/* ADDING <SCRIPT> that adds <LINK stylesheet> after html parsing */
 	public function add_to_footer($name) {
-		echo '<script defer>(function () { var o = document.createElement("link");o.setAttribute("rel", "stylesheet");o.setAttribute("href", "'.ARTICLE_PLUGIN_URL.'assets/emart-style.css");document.head.appendChild(o); })();</script>';
-		echo '<script defer>(function () { var o = document.createElement("link");o.setAttribute("rel", "stylesheet");o.setAttribute("href", "'.ARTICLE_PLUGIN_URL.'assets/emart-style-mobile.css");o.setAttribute("media", "(max-width:999px)");document.head.appendChild(o); })();</script>';
+		echo '<script defer>(function () { var o = document.createElement("link");o.setAttribute("rel", "stylesheet");o.setAttribute("href", "'.ARTICLE_PLUGIN_URL.'assets/emart-style.css?v=1.0.0.2");document.head.appendChild(o); })();</script>';
+		echo '<script defer>(function () { var o = document.createElement("link");o.setAttribute("rel", "stylesheet");o.setAttribute("href", "'.ARTICLE_PLUGIN_URL.'assets/emart-style-mobile.css?v=1.0.0.2");o.setAttribute("media", "(max-width:999px)");document.head.appendChild(o); })();</script>';
 	}
 
 }
