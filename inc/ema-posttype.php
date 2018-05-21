@@ -27,6 +27,8 @@ final class RegEmArt {
 		add_action('manage_nyheter_posts_custom_column',  array($this, 'my_show_columns'));
 		add_filter( 'manage_edit-nyheter_sortable_columns', array($this, 'sort_column'));
 
+		add_filter('emtheme_sitemap_post_type', array($this, 'add_sitemap'));
+
 		// registering widget area
 		add_action('widgets_init', array($this, 'register_widget'));
 
@@ -35,6 +37,13 @@ final class RegEmArt {
 
 		// init the article page admin version
 		EmArtPager::get_instance();
+	}
+
+	public function add_sitemap($data) {
+
+		array_push($data, 'article');
+
+		return $data;
 	}
 
 	/**
@@ -46,7 +55,7 @@ final class RegEmArt {
 	 * @return object|WP_Error the registered post type object, or an error object
 	 */
 	public function register_post_type() {
-	
+		
 		$labels = array(
 			'name'               => __( 'Nyheter', 'text-domain' ),
 			'singular_name'      => __( 'Nyhet', 'text-domain' ),
@@ -64,19 +73,19 @@ final class RegEmArt {
 	
 		$args = array(
 			'labels'              => $labels,
-			'hierarchical'        => false,
+			'hierarchical'        => true,
 			'description'         => 'description',
-			'taxonomies'          => array(),
+			'taxonomies'          => array('category'),
 			'public'              => true,
 			'show_ui'             => true,
 			'show_in_menu'        => true,
 			'show_in_admin_bar'   => true,
 			'menu_position'       => 26,
-			'menu_icon' => '',
+			'menu_icon' 		  => '',
 			'show_in_nav_menus'   => true,
 			'publicly_queryable'  => true,
 			'exclude_from_search' => false,
-			'has_archive'         => false,
+			'has_archive'         => true,
 			'query_var'           => true,
 			'can_export'          => true,
 			'rewrite'             => true,
@@ -96,8 +105,8 @@ final class RegEmArt {
 			),
 		);
 	
-		register_post_type('nyheter', $args );
-		// add_post_type_support( 'article', 'post-formats' );
+		register_post_type('nyheter', $args);
+		// add_post_type_support( 'nyheter', 'post-formats');
 	}
 
 	/* adding order column and its name */
