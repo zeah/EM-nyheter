@@ -26,6 +26,7 @@ final class ShortEmArt {
 
 	public function set_search($query) {
         if ($query->is_search) {
+            if ($query->get('post_type') == 'user_request') return;
 	        if (!$query->get('post_type')) $query->set('post_type', array('page', 'post', 'nyheter'));
     	    else $query->set('post_type', array_merge(array('nyheter'), $query->get('post_type')));
 		}
@@ -187,7 +188,7 @@ final class ShortEmArt {
 	/* ADDING <SCRIPT> that adds <LINK stylesheet> after html parsing */
 	public function add_to_footer($name) {
 		echo '<script defer>(function () { var o = document.createElement("link");o.setAttribute("rel", "stylesheet");o.setAttribute("href", "'.ARTICLE_PLUGIN_URL.'assets/emart-style.css?v=1.0.0.2");document.head.appendChild(o); })();</script>';
-		echo '<script defer>(function () { var o = document.createElement("link");o.setAttribute("rel", "stylesheet");o.setAttribute("href", "'.ARTICLE_PLUGIN_URL.'assets/emart-style-mobile.css?v=1.0.0.2");o.setAttribute("media", "(max-width:999px)");document.head.appendChild(o); })();</script>';
+		echo '<script defer>(function () { var o = document.createElement("link");o.setAttribute("rel", "stylesheet");o.setAttribute("href", "'.ARTICLE_PLUGIN_URL.'assets/emart-style-mobile.css?v=1.0.0.2");o.setAttribute("media", "(max-width:1023px)");document.head.appendChild(o); })();</script>';
 	}
 
 }

@@ -1,16 +1,8 @@
-.em-articles-container {
-	width: 100% !important;
+.em-articles-list {
+	display: block !important;
+	/*width: 100% !important;*/
 }
 
-.em-articles-listitem {
-	flex-basis: 100% !important;
-}
-
-.em-articles-thumbnail {
-	width: 100% !important;
-	padding-top: 0 !important;
-}
-
-.em-articles-thumbnail-first {
-	height: 15rem !important;
+.em-articles-excerpt {
+	padding-bottom: 1rem;
 }

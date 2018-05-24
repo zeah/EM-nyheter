@@ -1,6 +1,5 @@
 
 
-*/
 
 html {
 	font-size: 62.5%;
@@ -10,9 +9,9 @@ html {
 .em-articles-container {
 	opacity: 1 !important;
 
-	margin: auto;
-	width: 100%;
-	font-size: 10px;
+	/*margin: auto;*/
+	/*width: 100%;*/
+	font-size: 1.4rem;
 }
 
 /* flexbox <ul> element */
@@ -27,7 +26,7 @@ html {
 
 /* flex <li> element */
 .em-articles-listitem {
-	list-style: none !important; /* li fix */
+	list-style: none; /* li fix */
 }
 
 /* special rule for first <li> element */
@@ -58,7 +57,7 @@ html {
 .em-articles-thumbnail {
 	display: block;
 	
-	margin: auto;
+	/*margin: auto;*/
 	width: 100%;
 }
 
@@ -76,9 +75,7 @@ html {
 /* article sub text */
 .em-articles-excerpt {
 	display: block;
-
 	margin: 1rem;
-	font-size: 1.6rem;
 }
 
 /* special rule for first article image */
