@@ -21,7 +21,15 @@ final class ShortEmArt {
         add_filter('pre_get_posts', array($this, 'set_search'), 99);
 
 		add_shortcode('nyheter', array($this, 'shortcode'));
+
+		add_filter('emtheme_add_search_type', array($this, 'add_search'));
 		// add_shortcode('nyheter', array($this, 'shortcode_callback'));
+	}
+
+	public function add_search($data) {
+		array_push($data, 'nyheter');
+
+		return $data;
 	}
 
 	public function set_search($query) {
