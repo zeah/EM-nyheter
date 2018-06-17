@@ -7,6 +7,7 @@
 Plugin Name: EM Article (EM Nyheter)
 Description: Articles
 Version: 1.0.1.2
+GitHub Plugin URI: zeah/emarticle-new
 */
 
 defined( 'ABSPATH' ) or die( 'Blank Space' );
