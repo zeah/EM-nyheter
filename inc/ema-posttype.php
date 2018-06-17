@@ -5,6 +5,9 @@ defined( 'ABSPATH' ) or die( 'Blank Space' );
 
 require_once 'ema-page.php';
 
+/**
+ * 
+ */
 final class RegEmArt {
 	private static $instance = null;
 
