@@ -32,6 +32,10 @@ final class ShortEmArt {
 		return $data;
 	}
 
+	/**
+	 * adding cpt to internal search
+	 * @param {void} 
+	 */
 	public function set_search($query) {
         if ($query->is_search) {
             if ($query->get('post_type') == 'user_request') return;
