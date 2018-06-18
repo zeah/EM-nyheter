@@ -6,7 +6,7 @@
 /*
 Plugin Name: EM Article (EM Nyheter)
 Description: Articles
-Version: 1.0.2.1
+Version: 1.0.2.2
 GitHub Plugin URI: zeah/EM-nyhether
 */
 
